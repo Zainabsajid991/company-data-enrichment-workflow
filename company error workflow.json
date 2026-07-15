@@ -1,0 +1,68 @@
+{
+  "name": "company error workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        32
+      ],
+      "id": "ca2606d6-14c0-43f4-9c7e-c6d4f1e93996",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "fromEmail": "zainabsajid.octacer@gmail.com",
+        "toEmail": "zainabsajid.octacer@gmail.com",
+        "subject": "=Data Enrichment Workflow Error - {{ $json.execution.lastNodeExecuted }} failed",
+        "html": "=An error occurred in the workflow.\n\nWorkflow:\n{{$json.workflow.name}}\n\nNode:\n{{$json.execution.lastNodeExecuted}}\n\nError:\n{{$json.execution.error.message}}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        32
+      ],
+      "id": "9cdd238d-56dd-4379-9b8b-359854fcba84",
+      "name": "Send an Email",
+      "webhookId": "aca427d8-a057-4d9c-8382-78d8a2d9227b",
+      "credentials": {
+        "smtp": {
+          "id": "ckWsdLUBhXp9AlaJ",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "b922cd7e-438f-4e96-a169-a80b6148f846",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3d74db6d3ec7316d5f0a02431678248182a34037dabf7e42c350723b412d003e"
+  },
+  "nodeGroups": [],
+  "id": "1phO1eWwAFJVLg5J",
+  "tags": []
+}
